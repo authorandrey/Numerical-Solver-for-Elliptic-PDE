@@ -369,5 +369,5 @@ docs/latex/
 
 # Program results
 
-output/
+output/*
 !output/plot_full.py
