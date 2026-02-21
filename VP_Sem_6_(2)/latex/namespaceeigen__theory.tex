@@ -1,0 +1,102 @@
+\doxysection{eigen\+\_\+theory Namespace Reference}
+\hypertarget{namespaceeigen__theory}{}\label{namespaceeigen__theory}\index{eigen\_theory@{eigen\_theory}}
+
+
+Theoretical formulas for eigenvalues of the Laplace operator.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}} \mbox{\hyperlink{namespaceeigen__theory_a0a97ab08b6ee2abc34b725fa6ecd9a7c}{lambda\+\_\+min}} (\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}} coeff\+\_\+x, \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}} coeff\+\_\+y, \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}} h)
+\begin{DoxyCompactList}\small\item\em Computes the theoretical minimum eigenvalue. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}} \mbox{\hyperlink{namespaceeigen__theory_a6ee4b59ab46aa1a0b29be3561be1bea4}{lambda\+\_\+max}} (\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}} coeff\+\_\+x, \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}} coeff\+\_\+y, \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}} h)
+\begin{DoxyCompactList}\small\item\em Computes the theoretical maximum eigenvalue. \end{DoxyCompactList}\item 
+std\+::tuple$<$ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}}, \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}} $>$ \mbox{\hyperlink{namespaceeigen__theory_ad1e3381d2f8e92872e883ad080c516db}{lambda\+\_\+max\+\_\+min}} (\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}} coeff\+\_\+x, \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}} coeff\+\_\+y, \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}} h)
+\begin{DoxyCompactList}\small\item\em Returns both eigenvalues as a tuple. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Theoretical formulas for eigenvalues of the Laplace operator. 
+
+\label{doc-func-members}
+\Hypertarget{namespaceeigen__theory_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{namespaceeigen__theory_a6ee4b59ab46aa1a0b29be3561be1bea4}\index{eigen\_theory@{eigen\_theory}!lambda\_max@{lambda\_max}}
+\index{lambda\_max@{lambda\_max}!eigen\_theory@{eigen\_theory}}
+\doxysubsubsection{\texorpdfstring{lambda\_max()}{lambda\_max()}}
+{\footnotesize\ttfamily \label{namespaceeigen__theory_a6ee4b59ab46aa1a0b29be3561be1bea4} 
+\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}} eigen\+\_\+theory\+::lambda\+\_\+max (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}}}]{coeff\+\_\+x}{, }\item[{\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}}}]{coeff\+\_\+y}{, }\item[{\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}}}]{h}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Computes the theoretical maximum eigenvalue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coeff\+\_\+x} & Coefficient a. \\
+\hline
+{\em coeff\+\_\+y} & Coefficient b. \\
+\hline
+{\em h} & Grid step. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Maximum eigenvalue\+: 4(a+b)/h\texorpdfstring{$^\wedge$}{\string^}2 \texorpdfstring{$\ast$}{*} cos\texorpdfstring{$^\wedge$}{\string^}2(pi\texorpdfstring{$\ast$}{*}h/2). 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{eigen__theory_8h_source_l00033}{33}} of file \mbox{\hyperlink{eigen__theory_8h_source}{eigen\+\_\+theory.\+h}}.
+
+\Hypertarget{namespaceeigen__theory_ad1e3381d2f8e92872e883ad080c516db}\index{eigen\_theory@{eigen\_theory}!lambda\_max\_min@{lambda\_max\_min}}
+\index{lambda\_max\_min@{lambda\_max\_min}!eigen\_theory@{eigen\_theory}}
+\doxysubsubsection{\texorpdfstring{lambda\_max\_min()}{lambda\_max\_min()}}
+{\footnotesize\ttfamily \label{namespaceeigen__theory_ad1e3381d2f8e92872e883ad080c516db} 
+std\+::tuple$<$ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}}, \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}} $>$ eigen\+\_\+theory\+::lambda\+\_\+max\+\_\+min (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}}}]{coeff\+\_\+x}{, }\item[{\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}}}]{coeff\+\_\+y}{, }\item[{\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}}}]{h}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns both eigenvalues as a tuple. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coeff\+\_\+x} & Coefficient a. \\
+\hline
+{\em coeff\+\_\+y} & Coefficient b. \\
+\hline
+{\em h} & Grid step. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Tuple (lambda\+\_\+max, lambda\+\_\+min). 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{eigen__theory_8h_source_l00047}{47}} of file \mbox{\hyperlink{eigen__theory_8h_source}{eigen\+\_\+theory.\+h}}.
+
+\Hypertarget{namespaceeigen__theory_a0a97ab08b6ee2abc34b725fa6ecd9a7c}\index{eigen\_theory@{eigen\_theory}!lambda\_min@{lambda\_min}}
+\index{lambda\_min@{lambda\_min}!eigen\_theory@{eigen\_theory}}
+\doxysubsubsection{\texorpdfstring{lambda\_min()}{lambda\_min()}}
+{\footnotesize\ttfamily \label{namespaceeigen__theory_a0a97ab08b6ee2abc34b725fa6ecd9a7c} 
+\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}} eigen\+\_\+theory\+::lambda\+\_\+min (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}}}]{coeff\+\_\+x}{, }\item[{\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}}}]{coeff\+\_\+y}{, }\item[{\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}}}]{h}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Computes the theoretical minimum eigenvalue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coeff\+\_\+x} & Coefficient a. \\
+\hline
+{\em coeff\+\_\+y} & Coefficient b. \\
+\hline
+{\em h} & Grid step. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Minimum eigenvalue\+: 4(a+b)/h\texorpdfstring{$^\wedge$}{\string^}2 \texorpdfstring{$\ast$}{*} sin\texorpdfstring{$^\wedge$}{\string^}2(pi\texorpdfstring{$\ast$}{*}h/2). 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{eigen__theory_8h_source_l00019}{19}} of file \mbox{\hyperlink{eigen__theory_8h_source}{eigen\+\_\+theory.\+h}}.
+

@@ -1,0 +1,86 @@
+\doxysection{plot\+\_\+full Namespace Reference}
+\hypertarget{namespaceplot__full}{}\label{namespaceplot__full}\index{plot\_full@{plot\_full}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+np.\+ndarray \mbox{\hyperlink{namespaceplot__full_a2af75dc2230cc1063758f3d39885511b}{u\+\_\+exact}} (Union\mbox{[}float, np.\+ndarray\mbox{]} x, Union\mbox{[}float, np.\+ndarray\mbox{]} y)
+\begin{DoxyCompactList}\small\item\em Exact analytical solution of the problem. \end{DoxyCompactList}\item 
+Tuple\mbox{[}np.\+ndarray, np.\+ndarray, np.\+ndarray\mbox{]} \mbox{\hyperlink{namespaceplot__full_ab77f8ca19f731367c9e7bc77c6fc057a}{read\+\_\+full\+\_\+solution}} (str filename)
+\begin{DoxyCompactList}\small\item\em Reads a binary solution file created by \doxylink{class_output_handler_a8984b692004a7dd333d5eb35c64ca32f}{Output\+Handler.\+save\+\_\+full\+\_\+solution}. \end{DoxyCompactList}\item 
+None \mbox{\hyperlink{namespaceplot__full_a01836b91afb6e599c545e96d9b138bd5}{main}} ()
+\begin{DoxyCompactList}\small\item\em Main function of the script. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{namespaceplot__full_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{namespaceplot__full_a01836b91afb6e599c545e96d9b138bd5}\index{plot\_full@{plot\_full}!main@{main}}
+\index{main@{main}!plot\_full@{plot\_full}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{namespaceplot__full_a01836b91afb6e599c545e96d9b138bd5} 
+ None plot\+\_\+full.\+main (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Main function of the script. 
+
+Performs reading of the file, computation of exact solution and error, creates and saves plots (comparison.\+png, error\+\_\+map.\+png), and displays them on the screen. 
+
+Definition at line \mbox{\hyperlink{plot__full_8py_source_l00060}{60}} of file \mbox{\hyperlink{plot__full_8py_source}{plot\+\_\+full.\+py}}.
+
+\Hypertarget{namespaceplot__full_ab77f8ca19f731367c9e7bc77c6fc057a}\index{plot\_full@{plot\_full}!read\_full\_solution@{read\_full\_solution}}
+\index{read\_full\_solution@{read\_full\_solution}!plot\_full@{plot\_full}}
+\doxysubsubsection{\texorpdfstring{read\_full\_solution()}{read\_full\_solution()}}
+{\footnotesize\ttfamily \label{namespaceplot__full_ab77f8ca19f731367c9e7bc77c6fc057a} 
+ Tuple\mbox{[}np.\+ndarray, np.\+ndarray, np.\+ndarray\mbox{]} plot\+\_\+full.\+read\+\_\+full\+\_\+solution (\begin{DoxyParamCaption}\item[{str}]{filename}{}\end{DoxyParamCaption})}
+
+
+
+Reads a binary solution file created by \doxylink{class_output_handler_a8984b692004a7dd333d5eb35c64ca32f}{Output\+Handler.\+save\+\_\+full\+\_\+solution}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & File name (e.\+g., \textquotesingle{}solution.\+bin\textquotesingle{}). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Tuple (X, Y, u\+\_\+num), where X, Y are coordinate matrices (meshgrid), u\+\_\+num is a 2D array of the numerical solution. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Value\+Error} & if the file is too short or has an invalid format.\\
+\hline
+\end{DoxyExceptions}
+File format\+:
+\begin{DoxyItemize}
+\item first 8 bytes\+: number of nodes along x (nx, size\+\_\+t)
+\item next 8 bytes\+: number of nodes along y (ny, size\+\_\+t)
+\item then nx\texorpdfstring{$\ast$}{*}ny double values in row-\/major order (j=0..ny-\/1, i=0..nx-\/1) 
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{plot__full_8py_source_l00027}{27}} of file \mbox{\hyperlink{plot__full_8py_source}{plot\+\_\+full.\+py}}.
+
+\Hypertarget{namespaceplot__full_a2af75dc2230cc1063758f3d39885511b}\index{plot\_full@{plot\_full}!u\_exact@{u\_exact}}
+\index{u\_exact@{u\_exact}!plot\_full@{plot\_full}}
+\doxysubsubsection{\texorpdfstring{u\_exact()}{u\_exact()}}
+{\footnotesize\ttfamily \label{namespaceplot__full_a2af75dc2230cc1063758f3d39885511b} 
+ np.\+ndarray plot\+\_\+full.\+u\+\_\+exact (\begin{DoxyParamCaption}\item[{Union\mbox{[}float, np.\+ndarray\mbox{]}}]{x}{, }\item[{Union\mbox{[}float, np.\+ndarray\mbox{]}}]{y}{}\end{DoxyParamCaption})}
+
+
+
+Exact analytical solution of the problem. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & x-\/coordinate (scalar or numpy array). \\
+\hline
+{\em y} & y-\/coordinate (scalar or numpy array). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+u(x,y) = x\texorpdfstring{$^\wedge$}{\string^}2 + cos\texorpdfstring{$^\wedge$}{\string^}2(y\texorpdfstring{$\ast$}{*}x). 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{plot__full_8py_source_l00018}{18}} of file \mbox{\hyperlink{plot__full_8py_source}{plot\+\_\+full.\+py}}.
+

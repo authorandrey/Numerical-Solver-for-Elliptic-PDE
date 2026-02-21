@@ -1,0 +1,60 @@
+/**
+@mainpage Numerical Solver for -a u_xx - b u_yy = f
+
+@section overview Overview
+This project implements a numerical solver for the elliptic partial differential equation
+\f[
+-a \frac{\partial^2 u}{\partial x^2} - b \frac{\partial^2 u}{\partial y^2} = f(x,y)
+\f]
+on the unit square \f$[0,1]\times[0,1]\f$ with Dirichlet boundary conditions.
+
+The solution is obtained using the **Seidel method**, and the eigenvalues of the discrete Laplacian operator are computed using the **power method** and **shifted power method**.
+
+@section modules Main Modules
+- @ref seidel_solver.h : Implementation of the Seidel iterative solver.
+- @ref power_method.h : Power method for the largest eigenvalue.
+- @ref shifted_power_method.h : Shifted power method for the smallest eigenvalue.
+- @ref laplacian_operator.h : Discrete Laplacian operator.
+- @ref functions.h : Exact solution, source term, and boundary conditions.
+- @ref eigen_theory.h : Theoretical eigenvalues for verification.
+- @ref output_handler.h : Output routines (saving to binary file, plotting).
+- @ref solver_controller.h : High-level controller that runs the complete simulation.
+
+@section usage Usage
+The program is executed via `main.cpp`, which sets up the parameters:
+- Coefficients: \f$a = 0.9\f$, \f$b = 1.1\f$
+- Grid step: \f$h = 0.1\f$
+- Tolerances: \f$10^{-6}\f$ for both eigenvalue and Seidel iterations
+- Maximum iterations: 100000
+
+The solver:
+1. Solves the PDE using the Seidel method.
+2. Saves the solution to `solution.bin` and generates plots via `plot_full.py`.
+3. Computes the largest eigenvalue (using alternating-sign initial vector) and the smallest eigenvalue (using unit constant initial vector).
+
+@section files List of Files
+- @ref context.h
+- @ref eigen_theory.h
+- @ref functions.h
+- @ref initial_vector_type.h
+- @ref laplacian_operator.h
+- @ref main.cpp
+- @ref math_utils.h
+- @ref mesh.h
+- @ref output_handler.h
+- @ref plot_full.py
+- @ref power_method.h
+- @ref seidel_solver.h
+- @ref shifted_power_method.h
+- @ref solver_controller.h
+- @ref clock_wrapper.h
+
+@section notes Notes
+- The grid is uniform with \f$N = 1/h + 1\f$ nodes per side.
+- Theoretical eigenvalues are given by:
+  \f[
+  \lambda_{\min} = \frac{4(a+b)}{h^2}\sin^2\frac{\pi h}{2},\qquad
+  \lambda_{\max} = \frac{4(a+b)}{h^2}\cos^2\frac{\pi h}{2}.
+  \f]
+- The Python script `plot_full.py` requires `numpy` and `matplotlib`.
+*/

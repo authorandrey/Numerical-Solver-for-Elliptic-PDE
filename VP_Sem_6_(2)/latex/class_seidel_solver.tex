@@ -1,0 +1,89 @@
+\doxysection{Seidel\+Solver Class Reference}
+\hypertarget{class_seidel_solver}{}\label{class_seidel_solver}\index{SeidelSolver@{SeidelSolver}}
+
+
+Solves the equation -\/a u\+\_\+xx -\/ b u\+\_\+yy = f using the Seidel method.  
+
+
+
+
+{\ttfamily \#include $<$seidel\+\_\+solver.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_seidel_solver_af8929f09357a97e973128e0d658d7e87}{Seidel\+Solver}} (const \mbox{\hyperlink{class_uniform_mesh}{Uniform\+Mesh}} \&mesh, \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}} coeff\+\_\+x, \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}} coeff\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Constructor, initializes the right-\/hand side and boundary conditions. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}} $>$ \mbox{\hyperlink{class_seidel_solver_ae2b4c9c8ec874fa6757e5a69b4ea6335}{solve}} (\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}} tolerance, size\+\_\+t max\+\_\+iter, size\+\_\+t check\+\_\+period=50)
+\begin{DoxyCompactList}\small\item\em Performs Seidel iterations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Solves the equation -\/a u\+\_\+xx -\/ b u\+\_\+yy = f using the Seidel method. 
+
+Definition at line \mbox{\hyperlink{seidel__solver_8h_source_l00011}{11}} of file \mbox{\hyperlink{seidel__solver_8h_source}{seidel\+\_\+solver.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_seidel_solver_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_seidel_solver_af8929f09357a97e973128e0d658d7e87}\index{SeidelSolver@{SeidelSolver}!SeidelSolver@{SeidelSolver}}
+\index{SeidelSolver@{SeidelSolver}!SeidelSolver@{SeidelSolver}}
+\doxysubsubsection{\texorpdfstring{SeidelSolver()}{SeidelSolver()}}
+{\footnotesize\ttfamily \label{class_seidel_solver_af8929f09357a97e973128e0d658d7e87} 
+Seidel\+Solver\+::\+Seidel\+Solver (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_uniform_mesh}{Uniform\+Mesh}} \&}]{mesh}{, }\item[{\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}}}]{coeff\+\_\+x}{, }\item[{\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}}}]{coeff\+\_\+y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor, initializes the right-\/hand side and boundary conditions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mesh} & Grid. \\
+\hline
+{\em coeff\+\_\+x} & Coefficient a. \\
+\hline
+{\em coeff\+\_\+y} & Coefficient b. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{seidel__solver_8h_source_l00019}{19}} of file \mbox{\hyperlink{seidel__solver_8h_source}{seidel\+\_\+solver.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_seidel_solver_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_seidel_solver_ae2b4c9c8ec874fa6757e5a69b4ea6335}\index{SeidelSolver@{SeidelSolver}!solve@{solve}}
+\index{solve@{solve}!SeidelSolver@{SeidelSolver}}
+\doxysubsubsection{\texorpdfstring{solve()}{solve()}}
+{\footnotesize\ttfamily \label{class_seidel_solver_ae2b4c9c8ec874fa6757e5a69b4ea6335} 
+std\+::vector$<$ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}} $>$ Seidel\+Solver\+::solve (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}}}]{tolerance}{, }\item[{size\+\_\+t}]{max\+\_\+iter}{, }\item[{size\+\_\+t}]{check\+\_\+period}{ = {\ttfamily 50}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Performs Seidel iterations. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tolerance} & Tolerance for residual reduction. \\
+\hline
+{\em max\+\_\+iter} & Maximum number of iterations. \\
+\hline
+{\em check\+\_\+period} & Period for residual check (default 50). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Solution vector (size total\+\_\+nodes()).
+\end{DoxyReturn}
+The residual is computed as sqrt(sum (Lu -\/ f)\texorpdfstring{$^\wedge$}{\string^}2) over interior nodes. 
+
+Definition at line \mbox{\hyperlink{seidel__solver_8h_source_l00034}{34}} of file \mbox{\hyperlink{seidel__solver_8h_source}{seidel\+\_\+solver.\+h}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{seidel__solver_8h}{seidel\+\_\+solver.\+h}}\end{DoxyCompactItemize}

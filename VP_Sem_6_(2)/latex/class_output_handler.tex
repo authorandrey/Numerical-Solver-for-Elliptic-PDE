@@ -1,0 +1,103 @@
+\doxysection{Output\+Handler Class Reference}
+\hypertarget{class_output_handler}{}\label{class_output_handler}\index{OutputHandler@{OutputHandler}}
+
+
+Static class for outputting results\+: printing, saving to binary file, plotting.  
+
+
+
+
+{\ttfamily \#include $<$output\+\_\+handler.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_output_handler_a00370ba56fff4f5e4231e2f2511b29ea}{print\+\_\+header}} (const \mbox{\hyperlink{struct_context}{Context}} \&ctx)
+\begin{DoxyCompactList}\small\item\em Prints solver parameters to console. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_output_handler_a8984b692004a7dd333d5eb35c64ca32f}{save\+\_\+full\+\_\+solution}} (const \mbox{\hyperlink{struct_context}{Context}} \&ctx, const std\+::string \&filename, const std\+::vector$<$ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}} $>$ solution)
+\begin{DoxyCompactList}\small\item\em Saves solution vector to a binary file. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{class_output_handler_aa97a11f1da0d24a6857ccdd65c6be86d}{plot\+\_\+full\+\_\+solution}} ()
+\begin{DoxyCompactList}\small\item\em Launches a Python script to visualize the solution. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Static class for outputting results\+: printing, saving to binary file, plotting. 
+
+Definition at line \mbox{\hyperlink{output__handler_8h_source_l00011}{11}} of file \mbox{\hyperlink{output__handler_8h_source}{output\+\_\+handler.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_output_handler_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_output_handler_aa97a11f1da0d24a6857ccdd65c6be86d}\index{OutputHandler@{OutputHandler}!plot\_full\_solution@{plot\_full\_solution}}
+\index{plot\_full\_solution@{plot\_full\_solution}!OutputHandler@{OutputHandler}}
+\doxysubsubsection{\texorpdfstring{plot\_full\_solution()}{plot\_full\_solution()}}
+{\footnotesize\ttfamily \label{class_output_handler_aa97a11f1da0d24a6857ccdd65c6be86d} 
+void Output\+Handler\+::plot\+\_\+full\+\_\+solution (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Launches a Python script to visualize the solution. 
+
+Calls "{}python plot\+\_\+full.\+py"{}. 
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & if system call fails. \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line \mbox{\hyperlink{output__handler_8h_source_l00065}{65}} of file \mbox{\hyperlink{output__handler_8h_source}{output\+\_\+handler.\+h}}.
+
+\Hypertarget{class_output_handler_a00370ba56fff4f5e4231e2f2511b29ea}\index{OutputHandler@{OutputHandler}!print\_header@{print\_header}}
+\index{print\_header@{print\_header}!OutputHandler@{OutputHandler}}
+\doxysubsubsection{\texorpdfstring{print\_header()}{print\_header()}}
+{\footnotesize\ttfamily \label{class_output_handler_a00370ba56fff4f5e4231e2f2511b29ea} 
+void Output\+Handler\+::print\+\_\+header (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_context}{Context}} \&}]{ctx}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Prints solver parameters to console. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & \doxylink{struct_context}{Context} with parameters. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{output__handler_8h_source_l00017}{17}} of file \mbox{\hyperlink{output__handler_8h_source}{output\+\_\+handler.\+h}}.
+
+\Hypertarget{class_output_handler_a8984b692004a7dd333d5eb35c64ca32f}\index{OutputHandler@{OutputHandler}!save\_full\_solution@{save\_full\_solution}}
+\index{save\_full\_solution@{save\_full\_solution}!OutputHandler@{OutputHandler}}
+\doxysubsubsection{\texorpdfstring{save\_full\_solution()}{save\_full\_solution()}}
+{\footnotesize\ttfamily \label{class_output_handler_a8984b692004a7dd333d5eb35c64ca32f} 
+void Output\+Handler\+::save\+\_\+full\+\_\+solution (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_context}{Context}} \&}]{ctx}{, }\item[{const std\+::string \&}]{filename}{, }\item[{const std\+::vector$<$ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}} $>$}]{solution}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Saves solution vector to a binary file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & \doxylink{struct_context}{Context}. \\
+\hline
+{\em filename} & Output file name. \\
+\hline
+{\em solution} & Solution vector (size total\+\_\+nodes()). \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & if file cannot be opened.\\
+\hline
+\end{DoxyExceptions}
+Format\+: first two 8-\/byte integers (nx, ny), then nx\texorpdfstring{$\ast$}{*}ny double values in row-\/major order. 
+
+Definition at line \mbox{\hyperlink{output__handler_8h_source_l00036}{36}} of file \mbox{\hyperlink{output__handler_8h_source}{output\+\_\+handler.\+h}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{output__handler_8h}{output\+\_\+handler.\+h}}\end{DoxyCompactItemize}

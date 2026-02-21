@@ -1,0 +1,33 @@
+\doxysection{eigen\+\_\+theory.\+h}
+\hypertarget{eigen__theory_8h_source}{}\label{eigen__theory_8h_source}\mbox{\hyperlink{eigen__theory_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{eigen__theory_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{eigen__theory_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{context_8h}{context.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{eigen__theory_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{math__utils_8h}{math\_utils.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{eigen__theory_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{\Hypertarget{eigen__theory_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <tuple>}}
+\DoxyCodeLine{\Hypertarget{eigen__theory_8h_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{eigen__theory_8h_source_l00011}00011\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceeigen__theory}{eigen\_theory}}\ \{}
+\DoxyCodeLine{\Hypertarget{eigen__theory_8h_source_l00019}\mbox{\hyperlink{namespaceeigen__theory_a0a97ab08b6ee2abc34b725fa6ecd9a7c}{00019}}\ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ \mbox{\hyperlink{namespaceeigen__theory_a0a97ab08b6ee2abc34b725fa6ecd9a7c}{lambda\_min}}(\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ coeff\_x,\ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ coeff\_y,\ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ h)\ \{}
+\DoxyCodeLine{\Hypertarget{eigen__theory_8h_source_l00020}00020\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ coeff\_sum\ =\ coeff\_x\ +\ coeff\_y;}
+\DoxyCodeLine{\Hypertarget{eigen__theory_8h_source_l00021}00021\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ factor\ =\ 4.0\ *\ coeff\_sum\ /\ (h\ *\ h);}
+\DoxyCodeLine{\Hypertarget{eigen__theory_8h_source_l00022}00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ sin\_term\ =\ std::sin(\mbox{\hyperlink{namespacemath__utils_a804df9affaad4d6be91c85df20c2b227}{math\_utils::PI}}\ *\ h\ /\ 2.0);}
+\DoxyCodeLine{\Hypertarget{eigen__theory_8h_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ factor\ *\ sin\_term\ *\ sin\_term;}
+\DoxyCodeLine{\Hypertarget{eigen__theory_8h_source_l00024}00024\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{eigen__theory_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{eigen__theory_8h_source_l00033}\mbox{\hyperlink{namespaceeigen__theory_a6ee4b59ab46aa1a0b29be3561be1bea4}{00033}}\ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ \mbox{\hyperlink{namespaceeigen__theory_a6ee4b59ab46aa1a0b29be3561be1bea4}{lambda\_max}}(\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ coeff\_x,\ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ coeff\_y,\ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ h)\ \{}
+\DoxyCodeLine{\Hypertarget{eigen__theory_8h_source_l00034}00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ coeff\_sum\ =\ coeff\_x\ +\ coeff\_y;}
+\DoxyCodeLine{\Hypertarget{eigen__theory_8h_source_l00035}00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ factor\ =\ 4.0\ *\ coeff\_sum\ /\ (h\ *\ h);}
+\DoxyCodeLine{\Hypertarget{eigen__theory_8h_source_l00036}00036\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ cos\_term\ =\ std::cos(\mbox{\hyperlink{namespacemath__utils_a804df9affaad4d6be91c85df20c2b227}{math\_utils::PI}}\ *\ h\ /\ 2.0);}
+\DoxyCodeLine{\Hypertarget{eigen__theory_8h_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ factor\ *\ cos\_term\ *\ cos\_term;}
+\DoxyCodeLine{\Hypertarget{eigen__theory_8h_source_l00038}00038\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{eigen__theory_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{eigen__theory_8h_source_l00047}\mbox{\hyperlink{namespaceeigen__theory_ad1e3381d2f8e92872e883ad080c516db}{00047}}\ \ \ \ \ \textcolor{keyword}{inline}\ std::tuple<DataType,\ DataType>\ \mbox{\hyperlink{namespaceeigen__theory_ad1e3381d2f8e92872e883ad080c516db}{lambda\_max\_min}}(\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ coeff\_x,\ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ coeff\_y,\ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ h)\ \{}
+\DoxyCodeLine{\Hypertarget{eigen__theory_8h_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{}
+\DoxyCodeLine{\Hypertarget{eigen__theory_8h_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceeigen__theory_a6ee4b59ab46aa1a0b29be3561be1bea4}{lambda\_max}}(coeff\_x,\ coeff\_y,\ h),}
+\DoxyCodeLine{\Hypertarget{eigen__theory_8h_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespaceeigen__theory_a0a97ab08b6ee2abc34b725fa6ecd9a7c}{lambda\_min}}(coeff\_x,\ coeff\_y,\ h)}
+\DoxyCodeLine{\Hypertarget{eigen__theory_8h_source_l00051}00051\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{eigen__theory_8h_source_l00052}00052\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{eigen__theory_8h_source_l00053}00053\ \}}
+
+\end{DoxyCode}

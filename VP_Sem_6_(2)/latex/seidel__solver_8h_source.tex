@@ -1,0 +1,95 @@
+\doxysection{seidel\+\_\+solver.\+h}
+\hypertarget{seidel__solver_8h_source}{}\label{seidel__solver_8h_source}\mbox{\hyperlink{seidel__solver_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{mesh_8h}{mesh.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <omp.h>}}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00011}\mbox{\hyperlink{class_seidel_solver}{00011}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_seidel_solver_af8929f09357a97e973128e0d658d7e87}{SeidelSolver}}\ \{}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00012}00012\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00019}\mbox{\hyperlink{class_seidel_solver_af8929f09357a97e973128e0d658d7e87}{00019}}\ \ \ \ \ \mbox{\hyperlink{class_seidel_solver_af8929f09357a97e973128e0d658d7e87}{SeidelSolver}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_uniform_mesh}{UniformMesh}}\&\ mesh,\ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ coeff\_x,\ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ coeff\_y)}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00020}00020\ \ \ \ \ \ \ \ \ :\ m\_mesh(mesh),\ m\_coeff\_x(coeff\_x),\ m\_coeff\_y(coeff\_y),}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00021}00021\ \ \ \ \ \ \ \ \ m\_right\_hand\_side(m\_mesh.total\_nodes(),\ 0.0),}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00022}00022\ \ \ \ \ \ \ \ \ m\_solution(m\_mesh.total\_nodes(),\ 0.0)\ \{}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00023}00023\ \ \ \ \ \ \ \ \ init();}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00024}00024\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00034}\mbox{\hyperlink{class_seidel_solver_ae2b4c9c8ec874fa6757e5a69b4ea6335}{00034}}\ \ \ \ \ std::vector<DataType>\ \mbox{\hyperlink{class_seidel_solver_ae2b4c9c8ec874fa6757e5a69b4ea6335}{solve}}(\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ tolerance,\ \textcolor{keywordtype}{size\_t}\ max\_iter,\ \textcolor{keywordtype}{size\_t}\ check\_period\ =\ 50)\ \{}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00035}00035\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ h2\ =\ m\_mesh.step()\ *\ m\_mesh.step();}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ coeff\_sum\ =\ 2.0\ *\ (m\_coeff\_x\ +\ m\_coeff\_y);}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ stride\ =\ m\_mesh.nodes\_per\_side();}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ residual\_norm\ =\ [\&]()\ -\/>\ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ \{}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ res\ =\ 0.0;}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00041}00041\ \textcolor{preprocessor}{\#ifdef\ \_OPENMP}}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00042}00042\ \textcolor{preprocessor}{\#pragma\ omp\ parallel\ for\ reduction(+:res)}}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00043}00043\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (std::ptrdiff\_t\ j\ =\ 1;\ j\ <\ static\_cast<std::ptrdiff\_t>(stride\ -\/\ 1);\ ++j)\ \{}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 1;\ i\ <\ stride\ -\/\ 1;\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ idx\ =\ i\ +\ j\ *\ stride;}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ center\ =\ m\_solution[idx];}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ left\ =\ m\_solution[idx\ -\/\ 1];}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ right\ =\ m\_solution[idx\ +\ 1];}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ down\ =\ m\_solution[idx\ -\/\ stride];}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ up\ =\ m\_solution[idx\ +\ stride];}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ d2x\ =\ -\/m\_coeff\_x\ *\ (left\ -\/\ 2.0\ *\ center\ +\ right)\ /\ h2;}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ d2y\ =\ -\/m\_coeff\_y\ *\ (down\ -\/\ 2.0\ *\ center\ +\ up)\ /\ h2;}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ Lu\ =\ d2x\ +\ d2y;}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ r\ =\ Lu\ -\/\ m\_right\_hand\_side[idx];}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ res\ +=\ r\ *\ r;}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::sqrt(res);}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00061}00061\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00063}00063\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ initial\_residual\ =\ residual\_norm();}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00064}00064\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ target\_residual\ =\ tolerance\ *\ initial\_residual;}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ iter\ =\ 0;\ iter\ <\ max\_iter;\ ++iter)\ \{}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ j\ =\ 1;\ j\ <\ stride\ -\/\ 1;\ ++j)\ \{}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 1;\ i\ <\ stride\ -\/\ 1;\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ idx\ =\ i\ +\ j\ *\ stride;}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ numerator\ =}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_coeff\_x\ *\ (m\_solution[idx\ -\/\ 1]\ +\ m\_solution[idx\ +\ 1])\ +}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_coeff\_y\ *\ (m\_solution[idx\ -\/\ stride]\ +\ m\_solution[idx\ +\ stride])\ +}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_right\_hand\_side[idx]\ *\ h2;}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_solution[idx]\ =\ numerator\ /\ coeff\_sum;}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (iter\ \%\ check\_period\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ current\_residual\ =\ residual\_norm();}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (current\_residual\ <\ target\_residual)}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00083}00083\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00085}00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_solution;}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00086}00086\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00088}00088\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00092}00092\ \ \ \ \ \textcolor{keywordtype}{void}\ init()\ \{}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00093}00093\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ j\ =\ 0;\ j\ <\ m\_mesh.\mbox{\hyperlink{class_uniform_mesh_a5f6392a0cf2f3a34cd83a3e7658eca4a}{nodes\_per\_side}}();\ ++j)\ \{}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ m\_mesh.\mbox{\hyperlink{class_uniform_mesh_a5f6392a0cf2f3a34cd83a3e7658eca4a}{nodes\_per\_side}}();\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ x\ =\ m\_mesh.\mbox{\hyperlink{class_uniform_mesh_a373f5bb4b103cb5e62f2bd2a5a1ca6d7}{x}}(i);}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ y\ =\ m\_mesh.\mbox{\hyperlink{class_uniform_mesh_a421b4f92adae02350797450c70baa213}{y}}(j);}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_right\_hand\_side[m\_mesh.\mbox{\hyperlink{class_uniform_mesh_aef6a7b0e56883a154ee1042a2b285896}{full\_index}}(i,\ j)]}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ \mbox{\hyperlink{namespaceexact_a5f4621d9c5c3af5d460a647ede69bb60}{exact::source}}(x,\ y,\ m\_coeff\_x,\ m\_coeff\_y);}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!m\_mesh.\mbox{\hyperlink{class_uniform_mesh_abbf7e1f021e8fabdb1a63940b08e4e30}{is\_inner}}(i,\ j))\ \{}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_solution[m\_mesh.\mbox{\hyperlink{class_uniform_mesh_aef6a7b0e56883a154ee1042a2b285896}{full\_index}}(i,\ j)]\ =\ \mbox{\hyperlink{namespaceexact_a408f14c40b6b0f43d06a499152d1b523}{exact::boundary}}(x,\ y);}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00103}00103\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00104}00104\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00106}00106\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00107}00107\ \ \ \ \ \textcolor{keyword}{const}\ UniformMesh\&\ m\_mesh;}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00108}00108\ \ \ \ \ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ m\_coeff\_x,\ m\_coeff\_y;}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00109}00109\ \ \ \ \ std::vector<DataType>\ m\_right\_hand\_side;}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00110}00110\ \ \ \ \ std::vector<DataType>\ m\_solution;}
+\DoxyCodeLine{\Hypertarget{seidel__solver_8h_source_l00111}00111\ \};}
+
+\end{DoxyCode}

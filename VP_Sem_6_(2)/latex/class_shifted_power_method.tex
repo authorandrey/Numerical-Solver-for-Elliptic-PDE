@@ -1,0 +1,111 @@
+\doxysection{Shifted\+Power\+Method Class Reference}
+\hypertarget{class_shifted_power_method}{}\label{class_shifted_power_method}\index{ShiftedPowerMethod@{ShiftedPowerMethod}}
+
+
+Computes the smallest eigenvalue using the shifted power method.  
+
+
+
+
+{\ttfamily \#include $<$shifted\+\_\+power\+\_\+method.\+h$>$}
+
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Operator$>$ }\\using \mbox{\hyperlink{class_shifted_power_method_a078cb6f01d4867571e2741fa454254a4}{Params}} = \mbox{\hyperlink{struct_power_method_1_1_params}{Power\+Method\+::\+Params}}$<$Operator$>$
+\begin{DoxyCompactList}\small\item\em Synonim for \doxylink{class_shifted_power_method_a078cb6f01d4867571e2741fa454254a4}{Params} in \doxylink{class_power_method}{Power\+Method}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_shifted_power_method_a653d44372b6c6bff334b8e3300e2c3c2}{Shifted\+Power\+Method}} (\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}} \+\_\+shift)
+\begin{DoxyCompactList}\small\item\em Constructor with a given shift (usually the largest eigenvalue). \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Operator$>$ }\\std\+::tuple$<$ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}}, unsigned $>$ \mbox{\hyperlink{class_shifted_power_method_a7f91040484ba16d6e160c89c9c65915a}{compute\+\_\+min}} (\mbox{\hyperlink{class_shifted_power_method_a078cb6f01d4867571e2741fa454254a4}{Params}}$<$ Operator $>$ \&params) const
+\begin{DoxyCompactList}\small\item\em Computes the smallest eigenvalue. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Computes the smallest eigenvalue using the shifted power method. 
+
+Applies the power method to the operator shift\texorpdfstring{$\ast$}{*}I -\/ A. 
+
+Definition at line \mbox{\hyperlink{shifted__power__method_8h_source_l00010}{10}} of file \mbox{\hyperlink{shifted__power__method_8h_source}{shifted\+\_\+power\+\_\+method.\+h}}.
+
+
+
+\label{doc-typedef-members}
+\Hypertarget{class_shifted_power_method_doc-typedef-members}
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{class_shifted_power_method_a078cb6f01d4867571e2741fa454254a4}\index{ShiftedPowerMethod@{ShiftedPowerMethod}!Params@{Params}}
+\index{Params@{Params}!ShiftedPowerMethod@{ShiftedPowerMethod}}
+\doxysubsubsection{\texorpdfstring{Params}{Params}}
+{\footnotesize\ttfamily \label{class_shifted_power_method_a078cb6f01d4867571e2741fa454254a4} 
+template$<$typename Operator$>$ \\
+using \mbox{\hyperlink{class_shifted_power_method_a078cb6f01d4867571e2741fa454254a4}{Shifted\+Power\+Method\+::\+Params}} = \mbox{\hyperlink{struct_power_method_1_1_params}{Power\+Method\+::\+Params}}$<$Operator$>$}
+
+
+
+Synonim for \doxylink{class_shifted_power_method_a078cb6f01d4867571e2741fa454254a4}{Params} in \doxylink{class_power_method}{Power\+Method}. 
+
+
+
+Definition at line \mbox{\hyperlink{shifted__power__method_8h_source_l00016}{16}} of file \mbox{\hyperlink{shifted__power__method_8h_source}{shifted\+\_\+power\+\_\+method.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_shifted_power_method_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_shifted_power_method_a653d44372b6c6bff334b8e3300e2c3c2}\index{ShiftedPowerMethod@{ShiftedPowerMethod}!ShiftedPowerMethod@{ShiftedPowerMethod}}
+\index{ShiftedPowerMethod@{ShiftedPowerMethod}!ShiftedPowerMethod@{ShiftedPowerMethod}}
+\doxysubsubsection{\texorpdfstring{ShiftedPowerMethod()}{ShiftedPowerMethod()}}
+{\footnotesize\ttfamily \label{class_shifted_power_method_a653d44372b6c6bff334b8e3300e2c3c2} 
+Shifted\+Power\+Method\+::\+Shifted\+Power\+Method (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}}}]{\+\_\+shift}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor with a given shift (usually the largest eigenvalue). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+shift} & Shift value. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{shifted__power__method_8h_source_l00022}{22}} of file \mbox{\hyperlink{shifted__power__method_8h_source}{shifted\+\_\+power\+\_\+method.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_shifted_power_method_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_shifted_power_method_a7f91040484ba16d6e160c89c9c65915a}\index{ShiftedPowerMethod@{ShiftedPowerMethod}!compute\_min@{compute\_min}}
+\index{compute\_min@{compute\_min}!ShiftedPowerMethod@{ShiftedPowerMethod}}
+\doxysubsubsection{\texorpdfstring{compute\_min()}{compute\_min()}}
+{\footnotesize\ttfamily \label{class_shifted_power_method_a7f91040484ba16d6e160c89c9c65915a} 
+template$<$typename Operator$>$ \\
+std\+::tuple$<$ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}}, unsigned $>$ Shifted\+Power\+Method\+::compute\+\_\+min (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_shifted_power_method_a078cb6f01d4867571e2741fa454254a4}{Params}}$<$ Operator $>$ \&}]{params}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Computes the smallest eigenvalue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em params} & Parameters for the power method (initial vector, etc.). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Tuple (eigenvalue, number of iterations).
+\end{DoxyReturn}
+Uses the shifted operator (shift\texorpdfstring{$\ast$}{*}I -\/ A) and then lambda\+\_\+min = shift -\/ mu, where mu is the largest eigenvalue of the shifted operator. Internal helper class implementing the shifted operator.
+
+Applies the shifted operator.
+
+Definition at line \mbox{\hyperlink{shifted__power__method_8h_source_l00032}{32}} of file \mbox{\hyperlink{shifted__power__method_8h_source}{shifted\+\_\+power\+\_\+method.\+h}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{shifted__power__method_8h}{shifted\+\_\+power\+\_\+method.\+h}}\end{DoxyCompactItemize}

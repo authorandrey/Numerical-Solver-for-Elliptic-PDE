@@ -1,0 +1,58 @@
+\chapter{Numerical Solver for -\/a u\+\_\+xx -\/ b u\+\_\+yy = f }
+\hypertarget{index}{}\label{index}\index{Numerical Solver for -\/a u\_xx -\/ b u\_yy = f@{Numerical Solver for -\/a u\_xx -\/ b u\_yy = f}}
+\hypertarget{index_overview}{}\doxysection{\texorpdfstring{Overview}{Overview}}\label{index_overview}
+This project implements a numerical solver for the elliptic partial differential equation   \[-a \frac{\partial^2 u}{\partial x^2} - b \frac{\partial^2 u}{\partial y^2} = f(x,y)
+\] on the unit square $[0,1]\times[0,1]$ with Dirichlet boundary conditions.
+
+The solution is obtained using the {\bfseries{Seidel method}}, and the eigenvalues of the discrete Laplacian operator are computed using the {\bfseries{power method}} and {\bfseries{shifted power method}}.\hypertarget{index_modules}{}\doxysection{\texorpdfstring{Main Modules}{Main Modules}}\label{index_modules}
+
+\begin{DoxyItemize}
+\item \doxylink{seidel__solver_8h}{seidel\+\_\+solver.\+h} \+: Implementation of the Seidel iterative solver.
+\item \doxylink{power__method_8h}{power\+\_\+method.\+h} \+: Power method for the largest eigenvalue.
+\item \doxylink{shifted__power__method_8h}{shifted\+\_\+power\+\_\+method.\+h} \+: Shifted power method for the smallest eigenvalue.
+\item \doxylink{laplacian__operator_8h}{laplacian\+\_\+operator.\+h} \+: Discrete Laplacian operator.
+\item \doxylink{functions_8h}{functions.\+h} \+: Exact solution, source term, and boundary conditions.
+\item \doxylink{eigen__theory_8h}{eigen\+\_\+theory.\+h} \+: Theoretical eigenvalues for verification.
+\item \doxylink{output__handler_8h}{output\+\_\+handler.\+h} \+: Output routines (saving to binary file, plotting).
+\item \doxylink{solver__controller_8h}{solver\+\_\+controller.\+h} \+: High-\/level controller that runs the complete simulation.
+\end{DoxyItemize}\hypertarget{index_usage}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{index_usage}
+The program is executed via {\ttfamily \doxylink{main_8cpp}{main.\+cpp}}, which sets up the parameters\+:
+\begin{DoxyItemize}
+\item Coefficients\+: $a = 0.9$, $b = 1.1$
+\item Grid step\+: $h = 0.1$
+\item Tolerances\+: $10^{-6}$ for both eigenvalue and Seidel iterations
+\item Maximum iterations\+: 100000
+\end{DoxyItemize}
+
+The solver\+:
+\begin{DoxyEnumerate}
+\item Solves the PDE using the Seidel method.
+\item Saves the solution to {\ttfamily solution.\+bin} and generates plots via {\ttfamily \doxylink{plot__full_8py}{plot\+\_\+full.\+py}}.
+\item Computes the largest eigenvalue (using alternating-\/sign initial vector) and the smallest eigenvalue (using unit constant initial vector).
+\end{DoxyEnumerate}\hypertarget{index_files}{}\doxysection{\texorpdfstring{List of Files}{List of Files}}\label{index_files}
+
+\begin{DoxyItemize}
+\item \doxylink{context_8h}{context.\+h}
+\item \doxylink{eigen__theory_8h}{eigen\+\_\+theory.\+h}
+\item \doxylink{functions_8h}{functions.\+h}
+\item \doxylink{initial__vector__type_8h}{initial\+\_\+vector\+\_\+type.\+h}
+\item \doxylink{laplacian__operator_8h}{laplacian\+\_\+operator.\+h}
+\item \doxylink{main_8cpp}{main.\+cpp}
+\item \doxylink{math__utils_8h}{math\+\_\+utils.\+h}
+\item \doxylink{mesh_8h}{mesh.\+h}
+\item \doxylink{output__handler_8h}{output\+\_\+handler.\+h}
+\item \doxylink{plot__full_8py}{plot\+\_\+full.\+py}
+\item \doxylink{power__method_8h}{power\+\_\+method.\+h}
+\item \doxylink{seidel__solver_8h}{seidel\+\_\+solver.\+h}
+\item \doxylink{shifted__power__method_8h}{shifted\+\_\+power\+\_\+method.\+h}
+\item \doxylink{solver__controller_8h}{solver\+\_\+controller.\+h}
+\item \doxylink{clock__wrapper_8h}{clock\+\_\+wrapper.\+h}
+\end{DoxyItemize}\hypertarget{index_notes}{}\doxysection{\texorpdfstring{Notes}{Notes}}\label{index_notes}
+
+\begin{DoxyItemize}
+\item The grid is uniform with $N = 1/h + 1$ nodes per side.
+\item Theoretical eigenvalues are given by\+:    \[  \lambda_{\min} = \frac{4(a+b)}{h^2}\sin^2\frac{\pi h}{2},\qquad
+  \lambda_{\max} = \frac{4(a+b)}{h^2}\cos^2\frac{\pi h}{2}.
+\]
+\item The Python script {\ttfamily \doxylink{plot__full_8py}{plot\+\_\+full.\+py}} requires {\ttfamily numpy} and {\ttfamily matplotlib}. 
+\end{DoxyItemize}

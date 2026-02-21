@@ -1,0 +1,100 @@
+\doxysection{exact Namespace Reference}
+\hypertarget{namespaceexact}{}\label{namespaceexact}\index{exact@{exact}}
+
+
+Exact solution and right-\/hand side for the test equation.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}} \mbox{\hyperlink{namespaceexact_ab54c870ff64ebe669b53b45b49aff885}{u}} (\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}} x, \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}} y)
+\begin{DoxyCompactList}\small\item\em Exact solution u(x,y) = x\texorpdfstring{$^\wedge$}{\string^}2 + cos\texorpdfstring{$^\wedge$}{\string^}2(y\texorpdfstring{$\ast$}{*}x). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}} \mbox{\hyperlink{namespaceexact_a5f4621d9c5c3af5d460a647ede69bb60}{source}} (\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}} x, \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}} y, \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}} coeff\+\_\+x, \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}} coeff\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Right-\/hand side corresponding to the exact solution. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}} \mbox{\hyperlink{namespaceexact_a408f14c40b6b0f43d06a499152d1b523}{boundary}} (\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}} x, \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}} y)
+\begin{DoxyCompactList}\small\item\em Boundary condition (same as exact solution). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Exact solution and right-\/hand side for the test equation. 
+
+\label{doc-func-members}
+\Hypertarget{namespaceexact_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{namespaceexact_a408f14c40b6b0f43d06a499152d1b523}\index{exact@{exact}!boundary@{boundary}}
+\index{boundary@{boundary}!exact@{exact}}
+\doxysubsubsection{\texorpdfstring{boundary()}{boundary()}}
+{\footnotesize\ttfamily \label{namespaceexact_a408f14c40b6b0f43d06a499152d1b523} 
+\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}} exact\+::boundary (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}}}]{x}{, }\item[{\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}}}]{y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Boundary condition (same as exact solution). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & x-\/coordinate. \\
+\hline
+{\em y} & y-\/coordinate. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+u(x,y). 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{functions_8h_source_l00040}{40}} of file \mbox{\hyperlink{functions_8h_source}{functions.\+h}}.
+
+\Hypertarget{namespaceexact_a5f4621d9c5c3af5d460a647ede69bb60}\index{exact@{exact}!source@{source}}
+\index{source@{source}!exact@{exact}}
+\doxysubsubsection{\texorpdfstring{source()}{source()}}
+{\footnotesize\ttfamily \label{namespaceexact_a5f4621d9c5c3af5d460a647ede69bb60} 
+\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}} exact\+::source (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}}}]{x}{, }\item[{\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}}}]{y}{, }\item[{\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}}}]{coeff\+\_\+x}{, }\item[{\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}}}]{coeff\+\_\+y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Right-\/hand side corresponding to the exact solution. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & x-\/coordinate. \\
+\hline
+{\em y} & y-\/coordinate. \\
+\hline
+{\em coeff\+\_\+x} & Coefficient a. \\
+\hline
+{\em coeff\+\_\+y} & Coefficient b. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+f(x,y) = -\/2a + 2 cos(2yx)(a y\texorpdfstring{$^\wedge$}{\string^}2 + b x\texorpdfstring{$^\wedge$}{\string^}2). 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{functions_8h_source_l00028}{28}} of file \mbox{\hyperlink{functions_8h_source}{functions.\+h}}.
+
+\Hypertarget{namespaceexact_ab54c870ff64ebe669b53b45b49aff885}\index{exact@{exact}!u@{u}}
+\index{u@{u}!exact@{exact}}
+\doxysubsubsection{\texorpdfstring{u()}{u()}}
+{\footnotesize\ttfamily \label{namespaceexact_ab54c870ff64ebe669b53b45b49aff885} 
+\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}} exact\+::u (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}}}]{x}{, }\item[{\mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{Data\+Type}}}]{y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Exact solution u(x,y) = x\texorpdfstring{$^\wedge$}{\string^}2 + cos\texorpdfstring{$^\wedge$}{\string^}2(y\texorpdfstring{$\ast$}{*}x). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & x-\/coordinate. \\
+\hline
+{\em y} & y-\/coordinate. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+u(x,y). 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{functions_8h_source_l00016}{16}} of file \mbox{\hyperlink{functions_8h_source}{functions.\+h}}.
+

@@ -1,0 +1,45 @@
+\doxysection{laplacian\+\_\+operator.\+h}
+\hypertarget{laplacian__operator_8h_source}{}\label{laplacian__operator_8h_source}\mbox{\hyperlink{laplacian__operator_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{mesh_8h}{mesh.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <omp.h>}}
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00011}\mbox{\hyperlink{class_laplacian_operator}{00011}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_laplacian_operator_a71b8a5aca508a482cf72bee9701cd533}{LaplacianOperator}}\ \{}
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00012}00012\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00019}\mbox{\hyperlink{class_laplacian_operator_a71b8a5aca508a482cf72bee9701cd533}{00019}}\ \ \ \ \ \mbox{\hyperlink{class_laplacian_operator_a71b8a5aca508a482cf72bee9701cd533}{LaplacianOperator}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_uniform_mesh}{UniformMesh}}\&\ mesh,\ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ coeff\_x,\ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ coeff\_y)}
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00020}00020\ \ \ \ \ \ \ \ \ :\ m\_mesh(mesh),\ m\_coeff\_x(coeff\_x),\ m\_coeff\_y(coeff\_y)\ \{}
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00021}00021\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00030}\mbox{\hyperlink{class_laplacian_operator_ae3be5b350dac133c4cf23cb0ef414f52}{00030}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_laplacian_operator_ae3be5b350dac133c4cf23cb0ef414f52}{apply}}(\textcolor{keyword}{const}\ std::vector<DataType>\&\ x,\ std::vector<DataType>\&\ y)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ inv\_h2\ =\ 1.0\ /\ (m\_mesh.step()\ *\ m\_mesh.step());}
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::size\_t\ n\ =\ m\_mesh.nodes\_per\_side();}
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::size\_t\ stride\ =\ n;}
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00035}00035\ \textcolor{preprocessor}{\#ifdef\ \_OPENMP}}
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00036}00036\ \textcolor{preprocessor}{\#pragma\ omp\ parallel\ for}}
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00037}00037\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (std::ptrdiff\_t\ j\ =\ 1;\ j\ <\ static\_cast<std::ptrdiff\_t>(n\ -\/\ 1);\ ++j)\ \{}
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (std::size\_t\ i\ =\ 1;\ i\ <\ n\ -\/\ 1;\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::size\_t\ idx\ =\ i\ +\ j\ *\ stride;}
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ center\ =\ x[idx];}
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ left\ =\ x[idx\ -\/\ 1];}
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ right\ =\ x[idx\ +\ 1];}
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ down\ =\ x[idx\ -\/\ stride];}
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ up\ =\ x[idx\ +\ stride];}
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ d2x\ =\ -\/m\_coeff\_x\ *\ inv\_h2\ *\ (left\ -\/\ 2.0\ *\ center\ +\ right);}
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ d2y\ =\ -\/m\_coeff\_y\ *\ inv\_h2\ *\ (down\ -\/\ 2.0\ *\ center\ +\ up);}
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ y[idx]\ =\ d2x\ +\ d2y;}
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00052}00052\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00053}00053\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00055}00055\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00056}00056\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_uniform_mesh}{UniformMesh}}\&\ m\_mesh;}
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00057}00057\ \ \ \ \ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ m\_coeff\_x,\ m\_coeff\_y;}
+\DoxyCodeLine{\Hypertarget{laplacian__operator_8h_source_l00058}00058\ \};}
+
+\end{DoxyCode}

@@ -1,0 +1,31 @@
+\doxysection{clock\+\_\+wrapper.\+h}
+\hypertarget{clock__wrapper_8h_source}{}\label{clock__wrapper_8h_source}\mbox{\hyperlink{clock__wrapper_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{clock__wrapper_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{clock__wrapper_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{context_8h}{context.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{clock__wrapper_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{\Hypertarget{clock__wrapper_8h_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{clock__wrapper_8h_source_l00010}\mbox{\hyperlink{class_clock}{00010}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_clock_adbc370eb6b5f8d01645cf440188160a8}{Clock}}\ \{}
+\DoxyCodeLine{\Hypertarget{clock__wrapper_8h_source_l00011}00011\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{clock__wrapper_8h_source_l00012}\mbox{\hyperlink{class_clock_a7e770f480f1c7e9bd3f8b7426a6595f0}{00012}}\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_clock_a7e770f480f1c7e9bd3f8b7426a6595f0}{TimePoint}}\ =\ std::chrono::steady\_clock::time\_point;}
+\DoxyCodeLine{\Hypertarget{clock__wrapper_8h_source_l00013}\mbox{\hyperlink{class_clock_acc2905ec86e8fc8ef1057d3a8d37efc8}{00013}}\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_clock_acc2905ec86e8fc8ef1057d3a8d37efc8}{ChronoClock}}\ =\ std::chrono::high\_resolution\_clock;}
+\DoxyCodeLine{\Hypertarget{clock__wrapper_8h_source_l00014}\mbox{\hyperlink{class_clock_a345399901fc0eb137086e8d08f9cbf1e}{00014}}\ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{class_clock_a345399901fc0eb137086e8d08f9cbf1e}{Elapsed}}\ =\ std::chrono::duration<DataType>;}
+\DoxyCodeLine{\Hypertarget{clock__wrapper_8h_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{clock__wrapper_8h_source_l00019}\mbox{\hyperlink{class_clock_adbc370eb6b5f8d01645cf440188160a8}{00019}}\ \ \ \ \ \mbox{\hyperlink{class_clock_adbc370eb6b5f8d01645cf440188160a8}{Clock}}()\ :\ m\_start(\mbox{\hyperlink{class_clock_acc2905ec86e8fc8ef1057d3a8d37efc8}{ChronoClock}}::now())\ \{\ \}}
+\DoxyCodeLine{\Hypertarget{clock__wrapper_8h_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{clock__wrapper_8h_source_l00025}\mbox{\hyperlink{class_clock_acc8c3189a04214f5cc8b0e4233c0d656}{00025}}\ \ \ \ \ \mbox{\hyperlink{class_clock_a345399901fc0eb137086e8d08f9cbf1e}{Elapsed}}\ \mbox{\hyperlink{class_clock_acc8c3189a04214f5cc8b0e4233c0d656}{elapsed}}()\ \{}
+\DoxyCodeLine{\Hypertarget{clock__wrapper_8h_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ end\ =\ ChronoClock::now();}
+\DoxyCodeLine{\Hypertarget{clock__wrapper_8h_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ end\ -\/\ m\_start;}
+\DoxyCodeLine{\Hypertarget{clock__wrapper_8h_source_l00028}00028\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{clock__wrapper_8h_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{clock__wrapper_8h_source_l00034}\mbox{\hyperlink{class_clock_aaf9906ef3c20be9941f7d4732d04bb40}{00034}}\ \ \ \ \ \mbox{\hyperlink{class_clock_a345399901fc0eb137086e8d08f9cbf1e}{Elapsed}}\ \mbox{\hyperlink{class_clock_aaf9906ef3c20be9941f7d4732d04bb40}{restart}}()\ \{}
+\DoxyCodeLine{\Hypertarget{clock__wrapper_8h_source_l00035}00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_clock_a345399901fc0eb137086e8d08f9cbf1e}{Elapsed}}\ \mbox{\hyperlink{class_clock_acc8c3189a04214f5cc8b0e4233c0d656}{elapsed}}\ =\ std::move(this-\/>\mbox{\hyperlink{class_clock_acc8c3189a04214f5cc8b0e4233c0d656}{elapsed}}());}
+\DoxyCodeLine{\Hypertarget{clock__wrapper_8h_source_l00036}00036\ \ \ \ \ \ \ \ \ m\_start\ =\ ChronoClock::now();}
+\DoxyCodeLine{\Hypertarget{clock__wrapper_8h_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_clock_acc8c3189a04214f5cc8b0e4233c0d656}{elapsed}};}
+\DoxyCodeLine{\Hypertarget{clock__wrapper_8h_source_l00038}00038\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{clock__wrapper_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{clock__wrapper_8h_source_l00040}00040\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{clock__wrapper_8h_source_l00041}00041\ \ \ \ \ \mbox{\hyperlink{class_clock_a7e770f480f1c7e9bd3f8b7426a6595f0}{TimePoint}}\ m\_start;}
+\DoxyCodeLine{\Hypertarget{clock__wrapper_8h_source_l00042}00042\ \};}
+
+\end{DoxyCode}

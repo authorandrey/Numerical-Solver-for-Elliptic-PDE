@@ -1,0 +1,28 @@
+\doxysection{math\+\_\+utils.\+h}
+\hypertarget{math__utils_8h_source}{}\label{math__utils_8h_source}\mbox{\hyperlink{math__utils_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{math__utils_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{math__utils_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{context_8h}{context.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{math__utils_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{math__utils_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{\Hypertarget{math__utils_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <omp.h>}}
+\DoxyCodeLine{\Hypertarget{math__utils_8h_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{math__utils_8h_source_l00011}00011\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespacemath__utils}{math\_utils}}\ \{}
+\DoxyCodeLine{\Hypertarget{math__utils_8h_source_l00015}\mbox{\hyperlink{namespacemath__utils_a804df9affaad4d6be91c85df20c2b227}{00015}}\ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{namespacemath__utils_a804df9affaad4d6be91c85df20c2b227}{PI}}\ =\ 3.14159265358979323846;}
+\DoxyCodeLine{\Hypertarget{math__utils_8h_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{math__utils_8h_source_l00024}\mbox{\hyperlink{namespacemath__utils_a6fbe0861b40c658b4a4317fd87cc7c22}{00024}}\ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ \mbox{\hyperlink{namespacemath__utils_a6fbe0861b40c658b4a4317fd87cc7c22}{dot}}(\textcolor{keyword}{const}\ std::vector<DataType>\&\ a,\ \textcolor{keyword}{const}\ std::vector<DataType>\&\ b)\ \{}
+\DoxyCodeLine{\Hypertarget{math__utils_8h_source_l00025}00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ sum\ =\ 0.0;}
+\DoxyCodeLine{\Hypertarget{math__utils_8h_source_l00026}00026\ \textcolor{preprocessor}{\#pragma\ omp\ parallel\ for\ reduction(+:sum)}}
+\DoxyCodeLine{\Hypertarget{math__utils_8h_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (std::ptrdiff\_t\ i\ =\ 0;\ i\ <\ static\_cast<std::ptrdiff\_t>(a.size());\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{math__utils_8h_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ sum\ +=\ a[i]\ *\ b[i];}
+\DoxyCodeLine{\Hypertarget{math__utils_8h_source_l00029}00029\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{math__utils_8h_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sum;}
+\DoxyCodeLine{\Hypertarget{math__utils_8h_source_l00031}00031\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{math__utils_8h_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{math__utils_8h_source_l00038}\mbox{\hyperlink{namespacemath__utils_ace09628752c592040f580c7e1a5fe5d0}{00038}}\ \ \ \ \ \textcolor{keyword}{inline}\ \mbox{\hyperlink{mesh_8h_a67706819df9b2bac4f93cd3d13281a11}{DataType}}\ \mbox{\hyperlink{namespacemath__utils_ace09628752c592040f580c7e1a5fe5d0}{norm}}(\textcolor{keyword}{const}\ std::vector<DataType>\&\ v)\ \{}
+\DoxyCodeLine{\Hypertarget{math__utils_8h_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::sqrt(\mbox{\hyperlink{namespacemath__utils_a6fbe0861b40c658b4a4317fd87cc7c22}{dot}}(v,\ v));}
+\DoxyCodeLine{\Hypertarget{math__utils_8h_source_l00040}00040\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{math__utils_8h_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{math__utils_8h_source_l00042}00042\ \}\ \textcolor{comment}{//\ namespace\ math\_utils}}
+
+\end{DoxyCode}
