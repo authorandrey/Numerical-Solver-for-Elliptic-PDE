@@ -62,9 +62,10 @@ public:
      * @details Calls "python plot_full.py".
      * @throws std::runtime_error if system call fails.
      */
-    static void plot_full_solution() {
+    static void plot_full_solution(const Context& ctx) {
         std::cout << "Launching Python script to plot full solution...\n";
-        int ret = std::system("python plot_full.py");
+        std::string cmd = "python " + ctx.output_dir + "/plot_full.py " + ctx.output_dir;
+        int ret = std::system(cmd.c_str());
         if (ret != 0) {
             throw std::runtime_error("Warning: Python script execution failed (code " + std::to_string(ret) + ").\n");
         }

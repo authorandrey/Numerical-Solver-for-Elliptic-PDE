@@ -14,4 +14,5 @@ struct Context {
     const DataType tol_seidel; ///< Tolerance for the Seidel method.
     const size_t max_iter_power; ///< Maximum number of iterations for the power method.
     const size_t max_iter_seidel; ///< Maximum number of iterations for the Seidel method.
+    const std::string output_dir; ///< Directory for output files (solution, plots).
 };

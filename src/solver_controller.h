@@ -25,11 +25,13 @@ public:
      * @param tol_seidel Tolerance for the Seidel method.
      * @param max_iter_power Maximum number of iterations for the power method.
      * @param max_iter_seidel Maximum number of iterations for the Seidel method.
+     * @param output_dir Directory where output files (solution binary, plots) will be stored.
      */
     SolverController(double a, double b, double h, double tol_power, double tol_seidel,
-        int max_iter_power, int max_iter_seidel)
+        int max_iter_power, int max_iter_seidel, const std::string& output_dir)
         : ctx{ UniformMesh(h), a, b, h, tol_power, tol_seidel,
-           static_cast<size_t>(max_iter_power), static_cast<size_t>(max_iter_seidel) } {
+           static_cast<size_t>(max_iter_power), static_cast<size_t>(max_iter_seidel),
+           output_dir } {
     }
 
     /**
@@ -40,10 +42,10 @@ public:
     void run_all(InitialVectorType type_max = InitialVectorType::UnitConstant,
         InitialVectorType type_min = InitialVectorType::UnitConstant) {
         OutputHandler::print_header(ctx);
+        compute_eigenvalues(type_max, type_min);
         auto solution = solve_seidel();
         OutputHandler::save_full_solution(ctx, "solution.bin", solution);
-        OutputHandler::plot_full_solution();
-        compute_eigenvalues(type_max, type_min);
+        OutputHandler::plot_full_solution(ctx);
     }
 
     /**
@@ -53,7 +55,7 @@ public:
         OutputHandler::print_header(ctx);
         auto solution = solve_seidel();
         OutputHandler::save_full_solution(ctx, "solution.bin", solution);
-        OutputHandler::plot_full_solution();
+        OutputHandler::plot_full_solution(ctx);
     }
 
     /**

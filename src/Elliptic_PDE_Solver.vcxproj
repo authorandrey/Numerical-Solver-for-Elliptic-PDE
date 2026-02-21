@@ -142,11 +142,15 @@
     <ClInclude Include="math_utils.h" />
     <ClInclude Include="mesh.h" />
     <ClInclude Include="output_handler.h" />
-    <ClInclude Include="plot_full.py" />
     <ClInclude Include="power_method.h" />
     <ClInclude Include="seidel_solver.h" />
     <ClInclude Include="shifted_power_method.h" />
     <ClInclude Include="solver_controller.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\docs\Doxyfile" />
+    <None Include="..\docs\mainpage.dox" />
+    <None Include="..\output\plot_full.py" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

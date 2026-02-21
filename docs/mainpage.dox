@@ -10,6 +10,11 @@ on the unit square \f$[0,1]\times[0,1]\f$ with Dirichlet boundary conditions.
 
 The solution is obtained using the **Seidel method**, and the eigenvalues of the discrete Laplacian operator are computed using the **power method** and **shifted power method**.
 
+@section directory_structure Directory Structure
+- `src/`       : Source code files.
+- `docs/`      : Doxygen configuration and generated documentation.
+- `output/`    : Output files produced by the program (solution binary, plots).
+
 @section modules Main Modules
 - @ref seidel_solver.h : Implementation of the Seidel iterative solver.
 - @ref power_method.h : Power method for the largest eigenvalue.

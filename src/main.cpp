@@ -12,11 +12,12 @@ int main() {
     const DataType h = 0.1;
     const DataType tol_power = 1e-6, tol_seidel = 1e-6;
     const size_t max_iter_power = 100000, max_iter_seidel = 100000;
+    const std::string output_dir = "../output";
 
     try {
 
         SolverController solver(a, b, h, tol_power, tol_seidel,
-            max_iter_power, max_iter_seidel);
+            max_iter_power, max_iter_seidel, output_dir);
         solver.run_all(
             InitialVectorType::Alternating,
             InitialVectorType::UnitConstant
