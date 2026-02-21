@@ -23,7 +23,7 @@ The solution is obtained using the **Seidel method**, and the eigenvalues of the
 - @ref functions.h : Exact solution, source term, and boundary conditions.
 - @ref eigen_theory.h : Theoretical eigenvalues for verification.
 - @ref output_handler.h : Output routines (saving to binary file, plotting).
-- @ref solver_controller.h : High-level controller that runs the complete simulation.
+- @ref solver_controller.h : Controller that runs the simulation.
 
 @section usage Usage
 The program is executed via `main.cpp`, which sets up the parameters:
