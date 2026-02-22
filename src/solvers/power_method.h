@@ -1,8 +1,8 @@
 ﻿#pragma once
 #include <vector>
 #include <tuple>
-#include "math_utils.h"
-#include "context.h"
+#include "core/context.h"
+#include "utils/math_utils.h"
 
 /**
  * @class PowerMethod

@@ -1,8 +1,7 @@
 #pragma once
 #include <cmath>
 #include <tuple>
-#include "types.h"
-#include "math_utils.h"
+#include "utils/math_utils.h"
 
 /**
  * @namespace eigen_theory

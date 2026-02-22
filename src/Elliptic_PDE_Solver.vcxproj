@@ -124,6 +124,7 @@
       <AdditionalOptions>/fp:fast /arch:AVX2 %(AdditionalOptions)</AdditionalOptions>
       <FloatingPointModel>Fast</FloatingPointModel>
       <DisableSpecificWarnings>6993</DisableSpecificWarnings>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -134,29 +135,29 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="clock_wrapper.h" />
-    <ClInclude Include="context.h" />
-    <ClInclude Include="eigen_theory.h" />
-    <ClInclude Include="functions.h" />
-    <ClInclude Include="initial_vector_type.h" />
-    <ClInclude Include="laplacian_operator.h" />
-    <ClInclude Include="math_utils.h" />
-    <ClInclude Include="mesh.h" />
-    <ClInclude Include="output_handler.h" />
-    <ClInclude Include="power_method.h" />
-    <ClInclude Include="seidel_solver.h" />
-    <ClInclude Include="settings.h" />
-    <ClInclude Include="shifted_power_method.h" />
-    <ClInclude Include="solver_controller.h" />
-    <ClInclude Include="types.h" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="..\.gitattributes" />
     <None Include="..\.gitignore" />
     <None Include="..\docs\Doxyfile" />
     <None Include="..\docs\mainpage.dox" />
     <None Include="..\output\plot_full.py" />
     <None Include="..\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="controller\solver_controller.h" />
+    <ClInclude Include="core\context.h" />
+    <ClInclude Include="core\mesh.h" />
+    <ClInclude Include="core\settings.h" />
+    <ClInclude Include="core\types.h" />
+    <ClInclude Include="solvers\laplacian_operator.h" />
+    <ClInclude Include="solvers\power_method.h" />
+    <ClInclude Include="solvers\seidel_solver.h" />
+    <ClInclude Include="solvers\shifted_power_method.h" />
+    <ClInclude Include="utils\clock_wrapper.h" />
+    <ClInclude Include="utils\eigen_theory.h" />
+    <ClInclude Include="utils\functions.h" />
+    <ClInclude Include="utils\initial_vector_type.h" />
+    <ClInclude Include="utils\math_utils.h" />
+    <ClInclude Include="utils\output_handler.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

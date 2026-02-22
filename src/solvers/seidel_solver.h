@@ -2,7 +2,7 @@
 #include <omp.h>
 #include <vector>
 #include <cmath>
-#include "mesh.h"
+#include "core/mesh.h"
 
 /**
  * @class SeidelSolver

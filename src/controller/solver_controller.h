@@ -1,14 +1,14 @@
 #pragma once
 #include <random>
-#include "functions.h"
-#include "seidel_solver.h"
-#include "power_method.h"
-#include "shifted_power_method.h"
-#include "initial_vector_type.h"
-#include "clock_wrapper.h"
-#include "eigen_theory.h"
-#include "output_handler.h"
-#include "context.h"
+#include "core/context.h"
+#include "utils/functions.h"
+#include "utils/initial_vector_type.h"
+#include "utils/clock_wrapper.h"
+#include "utils/eigen_theory.h"
+#include "utils/output_handler.h"
+#include "solvers/seidel_solver.h"
+#include "solvers/power_method.h"
+#include "solvers/shifted_power_method.h"
 
 /**
  * @class SolverController

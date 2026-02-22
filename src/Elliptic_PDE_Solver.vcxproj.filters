@@ -1,58 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="clock_wrapper.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="context.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="eigen_theory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="functions.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="initial_vector_type.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="laplacian_operator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="math_utils.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="mesh.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="output_handler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="power_method.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="seidel_solver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="shifted_power_method.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="solver_controller.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="types.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="settings.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
     <Filter Include="Header Files">
       <UniqueIdentifier>{c9335626-c9ec-432f-b2ce-5027ba4ad469}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{7dbba826-5ad2-4720-91a3-6fc377cc1365}</UniqueIdentifier>
     </Filter>
     <Filter Include="Python Scripts">
       <UniqueIdentifier>{239404f9-fd4f-416f-bdbc-933f799d723f}</UniqueIdentifier>
@@ -62,6 +12,21 @@
     </Filter>
     <Filter Include="Git">
       <UniqueIdentifier>{4d5bfdc2-e8b5-4464-8b20-fa5d0bf73da7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\core">
+      <UniqueIdentifier>{9b21242c-6303-4788-922c-d3becc06d14d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\controller">
+      <UniqueIdentifier>{c1a8b91f-51e2-44ca-ad71-c25f6a56cde8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\solvers">
+      <UniqueIdentifier>{29676155-4245-4268-997f-99909dde88c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\utils">
+      <UniqueIdentifier>{7411b112-f34f-4de1-bd97-79b8d87077de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{7dbba826-5ad2-4720-91a3-6fc377cc1365}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -88,5 +53,52 @@
     <None Include="..\README.md">
       <Filter>Git</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="core\context.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\mesh.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\settings.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\types.h">
+      <Filter>Header Files\core</Filter>
+    </ClInclude>
+    <ClInclude Include="controller\solver_controller.h">
+      <Filter>Header Files\controller</Filter>
+    </ClInclude>
+    <ClInclude Include="solvers\laplacian_operator.h">
+      <Filter>Header Files\solvers</Filter>
+    </ClInclude>
+    <ClInclude Include="solvers\power_method.h">
+      <Filter>Header Files\solvers</Filter>
+    </ClInclude>
+    <ClInclude Include="solvers\seidel_solver.h">
+      <Filter>Header Files\solvers</Filter>
+    </ClInclude>
+    <ClInclude Include="solvers\shifted_power_method.h">
+      <Filter>Header Files\solvers</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\clock_wrapper.h">
+      <Filter>Header Files\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\eigen_theory.h">
+      <Filter>Header Files\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\functions.h">
+      <Filter>Header Files\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\initial_vector_type.h">
+      <Filter>Header Files\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\math_utils.h">
+      <Filter>Header Files\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\output_handler.h">
+      <Filter>Header Files\utils</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

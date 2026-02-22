@@ -1,5 +1,5 @@
 #pragma once
-#include <string_view>
+#include <string>
 
 #if __cplusplus > 201703L
 constexpr std::string OUTPUT_DIR = "../output";

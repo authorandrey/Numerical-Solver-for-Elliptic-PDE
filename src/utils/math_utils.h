@@ -2,7 +2,7 @@
 #include <omp.h>
 #include <vector>
 #include <cmath>
-#include "types.h"
+#include "core/types.h"
 
 /**
  * @namespace math_utils

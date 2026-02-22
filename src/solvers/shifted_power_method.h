@@ -1,6 +1,6 @@
 #pragma once
-#include "power_method.h"
-#include "laplacian_operator.h"
+#include "solvers/laplacian_operator.h"
+#include "solvers/power_method.h"
 
 /**
  * @class ShiftedPowerMethod

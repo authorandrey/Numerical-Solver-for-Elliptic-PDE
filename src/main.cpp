@@ -1,5 +1,5 @@
-#include "solver_controller.h"
-#include "settings.h"
+#include "controller/solver_controller.h"
+#include "core/settings.h"
 
 /**
  * @brief Entry point.
@@ -10,7 +10,7 @@
  */
 int main() {
     const DataType a = 0.9, b = 1.1;
-    const DataType h = 0.1;
+    const DataType h = 0.01;
     const DataType tol_power = 1e-6, tol_seidel = 1e-6;
     const size_t max_iter_power = 100000, max_iter_seidel = 100000;
 

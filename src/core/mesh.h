@@ -1,7 +1,7 @@
 #pragma once
 #include <stdexcept>
 #include <functional>
-#include "types.h"
+#include "core/types.h"
 
 /**
  * @class UniformMesh
