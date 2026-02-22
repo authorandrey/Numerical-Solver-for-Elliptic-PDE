@@ -1,8 +1,7 @@
 #pragma once
 #include <stdexcept>
 #include <functional>
-
-using DataType = double;
+#include "types.h"
 
 /**
  * @class UniformMesh

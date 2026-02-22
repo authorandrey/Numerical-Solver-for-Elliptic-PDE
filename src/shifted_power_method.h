@@ -19,7 +19,7 @@ public:
     * @brief Constructor with a given shift (usually the largest eigenvalue).
     * @param _shift Shift value.
     */
-    ShiftedPowerMethod(DataType _shift) : m_shift(_shift) { }
+    explicit ShiftedPowerMethod(DataType _shift) : m_shift(_shift) { }
 
     /**
      * @brief Computes the smallest eigenvalue.

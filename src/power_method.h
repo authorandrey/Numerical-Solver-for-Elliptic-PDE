@@ -1,11 +1,8 @@
 ﻿#pragma once
-#include "mesh.h"
+#include <vector>
+#include <tuple>
 #include "math_utils.h"
 #include "context.h"
-#include <vector>
-#include <cmath>
-#include <iostream>
-#include <tuple>
 
 /**
  * @class PowerMethod
@@ -38,7 +35,6 @@ public:
     template<typename Operator>
     std::tuple<DataType, unsigned> compute_max(Params<Operator>& params) const {
         const size_t N = params.x.size();
-        const size_t stride = params.mesh.nodes_per_side();
 
         normalize_with_boundary(params.x, params.mesh);
 

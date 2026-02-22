@@ -1,7 +1,7 @@
 #pragma once
-#include "mesh.h"
-#include <vector>
 #include <omp.h>
+#include <vector>
+#include "mesh.h"
 
 /**
  * @class LaplacianOperator

@@ -123,6 +123,7 @@
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalOptions>/fp:fast /arch:AVX2 %(AdditionalOptions)</AdditionalOptions>
       <FloatingPointModel>Fast</FloatingPointModel>
+      <DisableSpecificWarnings>6993</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -144,13 +145,18 @@
     <ClInclude Include="output_handler.h" />
     <ClInclude Include="power_method.h" />
     <ClInclude Include="seidel_solver.h" />
+    <ClInclude Include="settings.h" />
     <ClInclude Include="shifted_power_method.h" />
     <ClInclude Include="solver_controller.h" />
+    <ClInclude Include="types.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\.gitattributes" />
+    <None Include="..\.gitignore" />
     <None Include="..\docs\Doxyfile" />
     <None Include="..\docs\mainpage.dox" />
     <None Include="..\output\plot_full.py" />
+    <None Include="..\README.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

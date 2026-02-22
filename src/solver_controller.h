@@ -1,4 +1,5 @@
 #pragma once
+#include <random>
 #include "functions.h"
 #include "seidel_solver.h"
 #include "power_method.h"
@@ -8,7 +9,6 @@
 #include "eigen_theory.h"
 #include "output_handler.h"
 #include "context.h"
-#include <random>
 
 /**
  * @class SolverController
@@ -28,10 +28,9 @@ public:
      * @param output_dir Directory where output files (solution binary, plots) will be stored.
      */
     SolverController(double a, double b, double h, double tol_power, double tol_seidel,
-        int max_iter_power, int max_iter_seidel, const std::string& output_dir)
+        size_t max_iter_power, size_t max_iter_seidel, const std::string& output_dir)
         : ctx{ UniformMesh(h), a, b, h, tol_power, tol_seidel,
-           static_cast<size_t>(max_iter_power), static_cast<size_t>(max_iter_seidel),
-           output_dir } {
+           max_iter_power, max_iter_seidel, output_dir } {
     }
 
     /**
@@ -39,7 +38,8 @@ public:
      * @param type_max Type of initial vector for the maximum eigenvalue.
      * @param type_min Type of initial vector for the minimum eigenvalue.
      */
-    void run_all(InitialVectorType type_max = InitialVectorType::UnitConstant,
+    [[maybe_unused]]
+    void run_all(InitialVectorType type_max = InitialVectorType::Alternating,
         InitialVectorType type_min = InitialVectorType::UnitConstant) {
         OutputHandler::print_header(ctx);
         compute_eigenvalues(type_max, type_min);
@@ -51,6 +51,7 @@ public:
     /**
      * @brief Runs the Seidel method with saving and visualization of the solution.
      */
+    [[maybe_unused]]
     void run_seidel() {
         OutputHandler::print_header(ctx);
         auto solution = solve_seidel();
@@ -63,7 +64,8 @@ public:
      * @param type_max Type of initial vector for the maximum eigenvalue.
      * @param type_min Type of initial vector for the minimum eigenvalue.
      */
-    void run_eigen(InitialVectorType type_max = InitialVectorType::UnitConstant,
+    [[maybe_unused]]
+    void run_eigen(InitialVectorType type_max = InitialVectorType::Alternating,
         InitialVectorType type_min = InitialVectorType::UnitConstant) {
         OutputHandler::print_header(ctx);
         compute_eigenvalues(type_max, type_min);
@@ -76,11 +78,9 @@ private:
      */
     std::vector<double> solve_seidel() {
         std::cout << "\n--- Seidel method ---\n";
-        SeidelSolver seidel(ctx.mesh, ctx.a, ctx.b);
+        SeidelSolver seidel(ctx.mesh, ctx.coeff_x, ctx.coeff_y);
         Clock clock;
-        auto solution = std::move(
-            seidel.solve(ctx.tol_seidel, ctx.max_iter_seidel)
-        );
+        auto solution = seidel.solve(ctx.tol_seidel, ctx.max_iter_seidel);
         std::cout << "Time: " << clock.elapsed().count() << " s\n";
         return solution;
     }
@@ -92,7 +92,6 @@ private:
      */
     std::vector<double> generate_initial_vector(InitialVectorType type) const {
         const std::size_t n = ctx.mesh.nodes_per_side();
-        const double h = ctx.mesh.step();
         std::vector<double> v(ctx.mesh.total_nodes(), 0.0);
 
         switch (type) {
@@ -135,7 +134,7 @@ private:
      */
     void compute_eigenvalues(InitialVectorType type_max, InitialVectorType type_min) {
         std::cout << "\n--- Eigenvalue computation ---\n";
-        LaplacianOperator laplacian(ctx.mesh, ctx.a, ctx.b);
+        LaplacianOperator laplacian(ctx.mesh, ctx.coeff_x, ctx.coeff_y);
 
         std::vector<double> initial_max = generate_initial_vector(type_max);
         std::vector<double> initial_min = generate_initial_vector(type_min);
@@ -155,7 +154,7 @@ private:
         Clock::Elapsed elapsed_min = clock.elapsed();
 
         double h = ctx.mesh.step();
-        auto [max_theor, min_theor] = eigen_theory::lambda_max_min(ctx.a, ctx.b, h);
+        auto [max_theor, min_theor] = eigen_theory::lambda_max_min(ctx.coeff_x, ctx.coeff_y, h);
 
         std::cout << "\n--- Max eigenvalue ---\n";
         std::cout << "Computed: " << lambda_max << "\n";

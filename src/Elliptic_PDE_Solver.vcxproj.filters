@@ -40,6 +40,12 @@
     <ClInclude Include="solver_controller.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="settings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -53,6 +59,9 @@
     </Filter>
     <Filter Include="Documentation">
       <UniqueIdentifier>{0da4f234-6786-4d6d-ab41-c31b5460dd3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Git">
+      <UniqueIdentifier>{4d5bfdc2-e8b5-4464-8b20-fa5d0bf73da7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -69,6 +78,15 @@
     </None>
     <None Include="..\docs\mainpage.dox">
       <Filter>Documentation</Filter>
+    </None>
+    <None Include="..\.gitattributes">
+      <Filter>Git</Filter>
+    </None>
+    <None Include="..\.gitignore">
+      <Filter>Git</Filter>
+    </None>
+    <None Include="..\README.md">
+      <Filter>Git</Filter>
     </None>
   </ItemGroup>
 </Project>

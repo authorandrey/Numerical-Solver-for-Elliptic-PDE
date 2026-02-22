@@ -1,6 +1,6 @@
 #pragma once
-#include "context.h"
 #include <chrono>
+#include "types.h"
 
 /**
  * @class Clock
@@ -22,7 +22,7 @@ public:
      * @brief Returns the time elapsed since construction or the last restart.
      * @return Duration in seconds (DataType).
      */
-    Elapsed elapsed() {
+    Elapsed elapsed() const {
         auto end = ChronoClock::now();
         return end - m_start;
     }
@@ -32,9 +32,9 @@ public:
      * @return Duration in seconds (DataType).
      */
     Elapsed restart() {
-        Elapsed elapsed = std::move(this->elapsed());
+        Elapsed elapsed_ = std::move(elapsed());
         m_start = ChronoClock::now();
-        return elapsed;
+        return elapsed_;
     }
 
 private:

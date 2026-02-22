@@ -15,7 +15,7 @@ The code is written in C++ with OpenMP for parallelization. A Python script (usi
 
 ### Requirements
 
-- C++17
+- C++20
 - OpenMP support (/openmp, enabled by default in .sln project for Release)
 - Python 3.x with packages: numpy, matplotlib
 
@@ -24,15 +24,6 @@ The code is written in C++ with OpenMP for parallelization. A Python script (usi
 1. Open the solution file `Elliptic_PDE_Solver.sln` in Visual Studio.
 2. Select the desired configuration (Release or Debug).
 3. Build the solution (Build → Build Solution).
-
-### Running the Program
-
-- Ensure that an `output` folder exists in the root directory (next to `src`). If not, create it manually.
-- Run the executable (no command‑line arguments required).  
-- Upon completion, the following files will be created in the `output` folder:
-  - `solution.bin` – binary file containing the grid and the numerical solution.
-  - `comparison.png` – 3D plots of the exact solution, numerical solution, and absolute error.
-  - `error_map.png` – 2D map of the absolute error.
 
 ### Configuration
 

@@ -1,8 +1,8 @@
 #pragma once
-#include "mesh.h"
+#include <omp.h>
 #include <vector>
 #include <cmath>
-#include <omp.h>
+#include "mesh.h"
 
 /**
  * @class SeidelSolver
